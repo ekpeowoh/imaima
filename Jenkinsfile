@@ -1,14 +1,20 @@
 pipeline{
-	agent any  
-	stages{
-		stage('1-clone'){
-			steps{
-				sh 'lscpu'
-			}
-		}
-		stage('2-systemscheck'){
-			steps{
-				sh 'sudo systemctl status jenkins'
-			}
-		}
-	}
+    agent any
+    stages{
+        stage('1-clonecode'){
+            steps{
+                sh 'df -h'
+            }
+        }
+        stage('2-memorycheck'){
+            steps{
+                sh 'free -g'
+            }
+        }
+        stage('3-welcomepage'){
+            steps{
+                echo "welcome to jenkins"
+            }
+        }
+    }
+}
